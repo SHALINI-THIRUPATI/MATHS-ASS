@@ -1,0 +1,25 @@
+import numpy as np
+from scipy.integrate import solve_ivp
+import matplotlib.pyplot as plt
+
+
+def ode_func(t, y):
+    dydt = 2 * t  # Example ODE: dy/dt = 2*t
+    return dydt
+
+y0 = [0]  # Initial value of y at t=0
+
+
+t_span = (0, 5)  # Solve from t=0 to t=5
+
+
+sol = solve_ivp(ode_func, t_span, y0)
+
+
+plt.plot(sol.t, sol.y[0], 'b', label='y(t)')
+plt.xlabel('Time (t)')
+plt.ylabel('y')
+plt.title('Solution of the ODE: dy/dt = 2*t')
+plt.legend()
+plt.grid(True)
+plt.show()
